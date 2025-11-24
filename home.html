@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - BusGo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <span>🚌</span>
+                <span>Bus Ease</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <button onclick="window.location.href='home.html'">Home</button>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </div>
+
+        <div class="page active">
+            <div class="home-header">
+                <h1>Find Your Perfect Bus Journey</h1>
+                <p>Book tickets for thousands of destinations</p>
+            </div>
+
+            <div class="search-section">
+                <form class="search-form" id="searchForm">
+                    <input type="text" id="fromCity" placeholder="From City" required>
+                    <input type="text" id="toCity" placeholder="To City" required>
+                    <input type="date" id="travelDate" required>
+                    <button type="submit" class="btn-search">Search Buses 🔍</button>
+                </form>
+            </div>
+
+            <div class="bus-results" id="busResults">
+                <div class="no-results">
+                    Enter your travel details to search for available buses
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BusGo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <span>🚌</span>
+                <span>Bus Ease</span>
+            </div>
+            <div class="nav-links">
+                <button onclick="window.location.href='login.html'">Login</button>
+                <button onclick="window.location.href='signup.html'">Sign Up</button>
+            </div>
+        </div>
+
+        <div class="page active">
+            <div class="form-container">
+                <h2>Create Account</h2>
+
+                <form id="signupForm">
+                    
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="Enter first name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Enter last name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <small class="error-message" id="passwordError" style="color: red; display: none;">
+                            Password must be 8+ characters, include numbers, letters & one special character.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Re-enter password" required>
+                        <small class="error-message" id="confirmError" style="color: red; display: none;">
+                            Passwords do not match!
+                        </small>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+
+                <div class="form-footer">
+                    Already have an account? <a href="login.html">Login</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("signupPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const passwordError = document.getElementById("passwordError");
+            const confirmError = document.getElementById("confirmError");
+
+            const strongPasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            let valid = true;
+
+            // Validate password format
+            if (!strongPasswordRegex.test(password)) {
+                passwordError.style.display = "block";
+                valid = false;
+            } else {
+                passwordError.style.display = "none";
+            }
+
+            // Confirm password match
+            if (password !== confirmPassword) {
+                confirmError.style.display = "block";
+                valid = false;
+            } else {
+                confirmError.style.display = "none";
+            }
+
+            if (valid) {
+                alert("Signup Successful!");
+                // window.location.href = "login.html"; // Redirect if needed
+            }
+        });
+    </script>
+
+</body>
+</html>
